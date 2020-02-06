@@ -1,0 +1,18 @@
+{
+  "home": "Home",
+  "register": "Register",
+  "login": "Login",
+  "buttons": {
+    "logout": "Logout",
+    "register": "Register",
+    "login": "Log In"
+  },
+  "input_names": {
+    "username": "username",
+    "password": "password"
+  },
+  "placeholders": {
+    "username": "Username",
+    "password": "Password"
+  }
+}

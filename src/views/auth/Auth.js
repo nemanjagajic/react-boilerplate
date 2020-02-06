@@ -1,6 +1,7 @@
-import React from 'react';
-import Register from "./Register";
-import Login from "./Login";
+import React from 'react'
+
+import Register from './Register'
+import Login from './Login'
 
 const Auth = () => {
   return (
@@ -8,7 +9,7 @@ const Auth = () => {
       <Register />
       <Login />
     </div>
-  );
-};
+  )
+}
 
-export default Auth;
+export default Auth

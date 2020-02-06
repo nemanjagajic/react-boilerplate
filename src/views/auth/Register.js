@@ -1,15 +1,17 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { register } from "../../store/auth/authActions";
+import { withNamespaces } from 'react-i18next'
 
-const Register = () => {
+import { register } from '../../store/auth/authActions'
+
+const Register = ({ t }) => {
   const dispatch = useDispatch()
   const [userData, setUserData] = useState({ username: '', password: '' })
 
   const onChange = e => {
-    const { name, value } = e.target;
-    setUserData({ ...userData, [name]: value });
-  };
+    const { name, value } = e.target
+    setUserData({ ...userData, [name]: value })
+  }
 
   const isValid = () => userData.username.length
     && userData.password.length >= 8
@@ -20,23 +22,23 @@ const Register = () => {
 
   return (
     <div>
-      <h2>Register</h2>
+      <h2>{t('register')}</h2>
       <input
-        placeholder={'Username'}
+        placeholder={t('placeholders:username')}
         name={'username'}
         value={userData.username}
         onChange={onChange}
       />
       <input
-        placeholder={'Password'}
+        placeholder={t('placeholders:password')}
         name={'password'}
         value={userData.password}
         type={'password'}
         onChange={onChange}
       />
-      <button disabled={!isValid()} onClick={handleRegister}>Register</button>
+      <button disabled={!isValid()} onClick={handleRegister}>{t('buttons:register')}</button>
     </div>
   )
 }
 
-export default Register
+export default withNamespaces()(Register)

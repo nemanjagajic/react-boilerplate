@@ -9,4 +9,5 @@ class AuthService {
   register = ({ username, password }) => request.post(API_ENDPOINTS.REGISTER, { username, password })
   logIn = ({ username, password }) => request.post(API_ENDPOINTS.LOGIN, { username, password })
 }
+
 export default new AuthService()

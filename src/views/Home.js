@@ -1,8 +1,10 @@
-import React from 'react';
+import React from 'react'
 import { useDispatch } from 'react-redux'
-import { logOut } from "../store/auth/authActions";
+import { withNamespaces } from 'react-i18next'
 
-const Home = () => {
+import { logOut } from '../store/auth/authActions'
+
+const Home = ({ t }) => {
   const dispatch = useDispatch()
 
   const handleLogout = () => {
@@ -11,10 +13,10 @@ const Home = () => {
 
   return (
     <div>
-      Home
-      <button onClick={handleLogout}>Logout</button>
+        {t('home')}
+      <button onClick={handleLogout}>{t('buttons:logout')}</button>
     </div>
-  );
-};
+  )
+}
 
-export default Home;
+export default withNamespaces()(Home)

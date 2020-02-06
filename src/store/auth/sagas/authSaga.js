@@ -1,6 +1,7 @@
 import { call, put } from 'redux-saga/effects'
+
 import authService from '../../../services/api/authService'
-import { setUser } from '../authActions'
+import { removeUser, setUser } from '../authActions'
 
 export function* register({ payload }) {
   try {
@@ -29,7 +30,7 @@ export function* logOut() {
   try {
     localStorage.removeItem('token')
     localStorage.removeItem('username')
-    yield put(setUser({ username: null, token: null }))
+    yield put(removeUser())
   } catch (e) {
     console.log(e)
   }

@@ -1,4 +1,4 @@
-import {REMOVE_USER, SET_USER} from './authConstants'
+import { REMOVE_USER, SET_USER } from './authConstants'
 
 const initialState = {
   user: {

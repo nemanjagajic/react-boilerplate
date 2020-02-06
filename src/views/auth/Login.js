@@ -1,17 +1,19 @@
 import React, {useState} from 'react'
 import { useDispatch } from 'react-redux'
-import { logIn } from "../../store/auth/authActions";
 import { useHistory } from 'react-router'
+import { withNamespaces } from 'react-i18next'
 
-const Login = () => {
+import { logIn } from '../../store/auth/authActions'
+
+const Login = ({ t }) => {
   const dispatch = useDispatch()
   const history = useHistory()
   const [userData, setUserData] = useState({ username: '', password: '' })
 
   const onChange = e => {
-    const { name, value } = e.target;
-    setUserData({ ...userData, [name]: value });
-  };
+    const { name, value } = e.target
+    setUserData({ ...userData, [name]: value })
+  }
 
   const isValid = () => userData.username.length
     && userData.password.length >= 8
@@ -26,23 +28,23 @@ const Login = () => {
 
   return (
     <div>
-      <h2>Login</h2>
+      <h2>{t('login')}</h2>
       <input
         onChange={onChange}
         name={'username'}
-        placeholder={'Username'}
+        placeholder={t('placeholders:username')}
         value={userData.username}
       />
       <input
         onChange={onChange}
         name={'password'}
-        placeholder={'Password'}
+        placeholder={t('placeholders:password')}
         type={'password'}
         value={userData.password}
       />
-      <button disabled={!isValid()} onClick={handleLogin}>Log in</button>
+      <button disabled={!isValid()} onClick={handleLogin}>{t('buttons:login')}</button>
     </div>
   )
 }
 
-export default Login
+export default withNamespaces()(Login)
