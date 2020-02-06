@@ -19,22 +19,23 @@ const Register = () => {
   }
 
   return (
-    <div>
-      <h2>Register</h2>
+    <div className={'content'}>
       <input
+        className={'input'}
         placeholder={'Username'}
         name={'username'}
         value={userData.username}
         onChange={onChange}
       />
       <input
+        className={'input'}
         placeholder={'Password'}
         name={'password'}
         value={userData.password}
         type={'password'}
         onChange={onChange}
       />
-      <button disabled={!isValid()} onClick={handleRegister}>Register</button>
+      <button className={'button'} disabled={!isValid()} onClick={handleRegister}>Register</button>
     </div>
   )
 }

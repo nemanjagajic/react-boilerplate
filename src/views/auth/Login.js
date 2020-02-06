@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import { useDispatch } from 'react-redux'
-import { logIn } from "../../store/auth/authActions";
+import { logIn } from '../../store/auth/authActions'
 import { useHistory } from 'react-router'
 
 const Login = () => {
@@ -25,22 +25,23 @@ const Login = () => {
   }
 
   return (
-    <div>
-      <h2>Login</h2>
+    <div className={'content'}>
       <input
+        className={'input'}
         onChange={onChange}
         name={'username'}
         placeholder={'Username'}
         value={userData.username}
       />
       <input
+        className={'input'}
         onChange={onChange}
         name={'password'}
         placeholder={'Password'}
         type={'password'}
         value={userData.password}
       />
-      <button disabled={!isValid()} onClick={handleLogin}>Log in</button>
+      <button className={'button centered'} disabled={!isValid()} onClick={handleLogin}>Log in</button>
     </div>
   )
 }
