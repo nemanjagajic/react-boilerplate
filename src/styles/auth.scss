@@ -65,7 +65,7 @@
     }
 
     .disabled {
-      background-color: #BBDEFB;
+      background-color: $primary-disabled;
       cursor: not-allowed;
     }
   }
