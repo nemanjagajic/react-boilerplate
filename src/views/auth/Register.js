@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { register } from "../../store/auth/authActions";
+import { useHistory } from 'react-router'
 
 const Register = () => {
   const dispatch = useDispatch()
+  const history = useHistory()
   const [userData, setUserData] = useState({ username: '', password: '' })
 
   const onChange = e => {
@@ -14,12 +16,17 @@ const Register = () => {
   const isValid = () => userData.username.length
     && userData.password.length >= 8
 
-  const handleRegister = () => {
-    dispatch(register(userData))
+  const handleRegister = e => {
+    e.preventDefault()
+    dispatch(register({ userData, navigateHome }))
+  }
+
+  const navigateHome = () => {
+    history.push('/')
   }
 
   return (
-    <div className={'content'}>
+    <form className={'content'}>
       <input
         className={'input'}
         placeholder={'Username'}
@@ -35,8 +42,15 @@ const Register = () => {
         type={'password'}
         onChange={onChange}
       />
-      <button className={'button'} disabled={!isValid()} onClick={handleRegister}>Register</button>
-    </div>
+      <input
+        type={'submit'}
+        value={'Register'}
+        className={'button centered ' + (!isValid() && 'disabled')}
+        disabled={!isValid()}
+        onClick={handleRegister}
+        onSubmit={handleRegister}
+      />
+    </form>
   )
 }
 

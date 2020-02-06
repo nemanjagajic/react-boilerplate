@@ -4,7 +4,7 @@ import { setUser } from '../authActions'
 
 export function* register({ payload }) {
   try {
-    yield call(authService.register, payload)
+    yield call(authService.register, payload.userData)
     yield call(logIn, { payload })
   } catch (e) {
     console.log(e)
@@ -13,7 +13,6 @@ export function* register({ payload }) {
 
 export function* logIn({ payload }) {
   try {
-    console.log(payload)
     const userData = payload.userData
     const { data } = yield call(authService.logIn, userData)
     localStorage.setItem('token', data.token)

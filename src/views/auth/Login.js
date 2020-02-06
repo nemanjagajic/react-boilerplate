@@ -16,7 +16,8 @@ const Login = () => {
   const isValid = () => userData.username.length
     && userData.password.length >= 8
 
-  const handleLogin = () => {
+  const handleLogin = e => {
+    e.preventDefault()
     dispatch(logIn({ userData, navigateHome }))
   }
 
@@ -25,7 +26,7 @@ const Login = () => {
   }
 
   return (
-    <div className={'content'}>
+    <form className={'content'}>
       <input
         className={'input'}
         onChange={onChange}
@@ -41,8 +42,15 @@ const Login = () => {
         type={'password'}
         value={userData.password}
       />
-      <button className={'button centered'} disabled={!isValid()} onClick={handleLogin}>Log in</button>
-    </div>
+      <input
+        type={'submit'}
+        value={'Log in'}
+        className={'button centered '  + (!isValid() && 'disabled')}
+        disabled={!isValid()}
+        onClick={handleLogin}
+        onSubmit={handleLogin}
+      />
+    </form>
   )
 }
 
