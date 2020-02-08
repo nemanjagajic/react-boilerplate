@@ -1,6 +1,7 @@
 import { call, put } from 'redux-saga/effects'
 import authService from '../../../services/api/authService'
 import { setUser } from '../authActions'
+import request, {attachHeaders} from '../../../services/request'
 
 export function* register({ payload }) {
   try {
@@ -18,6 +19,9 @@ export function* logIn({ payload }) {
     localStorage.setItem('token', data.token)
     localStorage.setItem('username', userData.username)
     yield put(setUser({ username: userData.username, token: data.token }))
+    attachHeaders(request, {
+      authorization: `Token ${data.token}`
+    })
     payload.navigateHome()
   } catch (e) {
     console.log(e)

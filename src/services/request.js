@@ -6,7 +6,7 @@ const defaultConfig = {
   responseType: 'json'
 }
 
-const attachHeaders = (instance, headers) => {
+export const attachHeaders = (instance, headers) => {
   Object.keys(headers).forEach((key) => {
     instance.defaults.headers[key] = headers[key]
   })
@@ -14,13 +14,13 @@ const attachHeaders = (instance, headers) => {
 
 const request = (config = defaultConfig) => {
   const instance = axios.create(config)
-  attachHeaders(instance, {
+  const token = localStorage.getItem('token')
+  const headers = {
     accept: 'application/json',
-    authorization: `Bearer ${localStorage.getItem('token')}`
-  })
-  return {
-    ...instance
   }
+  if (token) headers.authorization = `Bearer ${token}`
+  attachHeaders(instance, headers)
+  return instance
 }
 
 export default request()
