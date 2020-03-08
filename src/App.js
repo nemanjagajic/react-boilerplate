@@ -1,8 +1,8 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
 import PrivateRoute from './PrivateRoute'
-import Home from './views/Home'
-import Auth from './views/auth/Auth'
+import Home from './containers/Home'
+import Auth from './containers/auth/Auth'
 
 function App() {
   return (
