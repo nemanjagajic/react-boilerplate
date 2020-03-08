@@ -11,5 +11,9 @@
       "username": "Username",
       "password": "Password"
     }
+  },
+  "navbar": {
+    "home": "Home",
+    "logout": "Logout"
   }
 }
