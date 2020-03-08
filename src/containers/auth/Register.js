@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { register } from "../../store/auth/authActions";
+import { register } from "../../store/auth/authActions"
 import { useHistory } from 'react-router'
 
 const Register = () => {
@@ -9,9 +9,9 @@ const Register = () => {
   const [userData, setUserData] = useState({ username: '', password: '' })
 
   const onChange = e => {
-    const { name, value } = e.target;
-    setUserData({ ...userData, [name]: value });
-  };
+    const { name, value } = e.target
+    setUserData({ ...userData, [name]: value })
+  }
 
   const isValid = () => userData.username.length
     && userData.password.length >= 8

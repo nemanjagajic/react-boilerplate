@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import Register from "./Register";
-import Login from "./Login";
+import React, { useState } from 'react'
+import Register from "./Register"
+import Login from "./Login"
 
 const Auth = () => {
-  const [selectedTab, setSelectedTab] = useState('login');
+  const [selectedTab, setSelectedTab] = useState('login')
 
   return (
     <div className={'auth-wrapper centered'}>
@@ -25,7 +25,7 @@ const Auth = () => {
         {selectedTab === 'login' ? <Login /> : <Register />}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Auth;
+export default Auth

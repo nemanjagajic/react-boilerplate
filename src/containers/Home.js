@@ -1,7 +1,7 @@
-import React from 'react';
+import React from 'react'
 import { useDispatch } from 'react-redux'
-import { logOut } from "../store/auth/authActions";
-import Navbar from "../components/Navbar";
+import { logOut } from "../store/auth/authActions"
+import Navbar from "../components/Navbar"
 
 const Home = () => {
   const dispatch = useDispatch()
@@ -17,7 +17,7 @@ const Home = () => {
         <div className={'title'}>Home page</div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home
