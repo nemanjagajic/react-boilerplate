@@ -1,7 +1,8 @@
-import React from 'react';
+import React from 'react'
 import { useDispatch } from 'react-redux'
-import { logOut } from "../store/auth/authActions";
-import Navbar from "../components/Navbar";
+
+import { logOut } from '../store/auth/authActions'
+import Navbar from '../components/Navbar'
 import i18n from '../i18n'
 
 const Home = () => {
@@ -18,7 +19,7 @@ const Home = () => {
         <div className={'title'}>{i18n.t('homePage')}</div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home

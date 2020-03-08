@@ -1,7 +1,7 @@
 import { call, put } from 'redux-saga/effects'
 import authService from '../../../services/api/authService'
 import { setUser } from '../authActions'
-import request, {attachHeaders} from '../../../services/request'
+import request, { attachHeaders } from '../../../services/request'
 
 export function* register({ payload }) {
   try {
