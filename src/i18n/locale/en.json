@@ -1,0 +1,15 @@
+{
+  "homePage": "Home Page",
+  "auth": {
+    "login": "Login",
+    "register": "Register",
+    "buttons": {
+      "login": "Log in",
+      "register": "Register"
+    },
+    "placeholders": {
+      "username": "Username",
+      "password": "Password"
+    }
+  }
+}
