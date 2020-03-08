@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { logIn } from '../../store/auth/authActions'
 import { useHistory } from 'react-router'
+import i18n from '../../i18n'
 
 const Login = () => {
   const dispatch = useDispatch()
@@ -31,20 +32,20 @@ const Login = () => {
         className={'input'}
         onChange={onChange}
         name={'username'}
-        placeholder={'Username'}
+        placeholder={i18n.t('auth.placeholders.username')}
         value={userData.username}
       />
       <input
         className={'input'}
         onChange={onChange}
         name={'password'}
-        placeholder={'Password'}
+        placeholder={i18n.t('auth.placeholders.password')}
         type={'password'}
         value={userData.password}
       />
       <input
         type={'submit'}
-        value={'Log in'}
+        value={i18n.t('auth.buttons.login')}
         className={'button centered '  + (!isValid() && 'disabled')}
         disabled={!isValid()}
         onClick={handleLogin}

@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { register } from "../../store/auth/authActions"
+import { register } from '../../store/auth/authActions'
 import { useHistory } from 'react-router'
+import i18n from '../../i18n'
 
 const Register = () => {
   const dispatch = useDispatch()
@@ -29,14 +30,14 @@ const Register = () => {
     <form className={'content'}>
       <input
         className={'input'}
-        placeholder={'Username'}
+        placeholder={i18n.t('auth.placeholders.username')}
         name={'username'}
         value={userData.username}
         onChange={onChange}
       />
       <input
         className={'input'}
-        placeholder={'Password'}
+        placeholder={i18n.t('auth.placeholders.password')}
         name={'password'}
         value={userData.password}
         type={'password'}
@@ -44,7 +45,7 @@ const Register = () => {
       />
       <input
         type={'submit'}
-        value={'Register'}
+        value={i18n.t('auth.buttons.register')}
         className={'button centered ' + (!isValid() && 'disabled')}
         disabled={!isValid()}
         onClick={handleRegister}

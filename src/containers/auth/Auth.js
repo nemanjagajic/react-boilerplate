@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
-import Register from "./Register"
-import Login from "./Login"
+import Register from './Register'
+import Login from './Login'
+import i18n from '../../i18n'
 
 const Auth = () => {
   const [selectedTab, setSelectedTab] = useState('login')
@@ -13,13 +14,13 @@ const Auth = () => {
             className={'login ' + (selectedTab === 'register' && 'inactive')}
             onClick={() => setSelectedTab('login')}
           >
-            Login
+            {i18n.t('auth.login')}
           </div>
           <div
             className={'register ' + (selectedTab === 'login' && 'inactive')}
             onClick={() => setSelectedTab('register')}
           >
-            Register
+            {i18n.t('auth.register')}
           </div>
         </div>
         {selectedTab === 'login' ? <Login /> : <Register />}
