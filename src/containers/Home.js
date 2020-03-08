@@ -1,6 +1,5 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-
 import { logOut } from '../store/auth/authActions'
 import Navbar from '../components/Navbar'
 import i18n from '../i18n'
