@@ -1,8 +1,8 @@
 import request from '../request'
 
 const API_ENDPOINTS = {
-  REGISTER: '/api/users/',
-  LOGIN: `/api-token-auth/`
+  REGISTER: '/api/auth/register',
+  LOGIN: `/api/auth/login`
 }
 
 class AuthService {
