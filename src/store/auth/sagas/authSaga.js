@@ -20,7 +20,7 @@ export function* logIn({ payload }) {
     localStorage.setItem('username', userData.username)
     yield put(setUser({ username: userData.username, token: data.token }))
     attachHeaders(request, {
-      authorization: `Token ${data.token}`
+      authorization: data.token
     })
     payload.navigateHome()
   } catch (e) {
