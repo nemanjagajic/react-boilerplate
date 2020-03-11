@@ -16,23 +16,38 @@ export function* logIn({ payload }) {
   try {
     const userData = payload.userData
     const { data } = yield call(authService.logIn, userData)
-    localStorage.setItem('token', data.token)
-    localStorage.setItem('username', userData.username)
-    yield put(setUser({ username: userData.username, token: data.token }))
-    attachHeaders(request, {
-      authorization: data.token
-    })
+    yield call(saveUserToLocalStorage, data)
     payload.navigateHome()
   } catch (e) {
     console.log(e)
   }
 }
 
+export function* logInWithGoogle({ payload }) {
+  try {
+    const accessToken = payload.accessToken
+    const { data } = yield call(authService.logInWithGoogle, accessToken)
+    yield call(saveUserToLocalStorage, data)
+    payload.navigateHome()
+  } catch (e) {
+    console.log(e)
+  }
+}
+
+function* saveUserToLocalStorage(data) {
+  localStorage.setItem('token', data.token)
+  localStorage.setItem('email', data.email)
+  yield put(setUser({ email: data.email, token: data.token }))
+  attachHeaders(request, {
+    authorization: data.token
+  })
+}
+
 export function* logOut() {
   try {
     localStorage.removeItem('token')
-    localStorage.removeItem('username')
-    yield put(setUser({ username: null, token: null }))
+    localStorage.removeItem('email')
+    yield put(setUser({ email: null, token: null }))
   } catch (e) {
     console.log(e)
   }

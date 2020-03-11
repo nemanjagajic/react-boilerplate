@@ -1,5 +1,4 @@
 {
-  "homePage": "Home Page",
   "auth": {
     "login": "Login",
     "register": "Register",
@@ -8,9 +7,10 @@
       "register": "Register"
     },
     "placeholders": {
-      "username": "Username",
+      "email": "Email",
       "password": "Password"
-    }
+    },
+    "loggedInAs": "Logged in as"
   },
   "navbar": {
     "home": "Home",

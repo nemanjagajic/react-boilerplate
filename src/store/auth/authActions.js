@@ -1,4 +1,4 @@
-import { REGISTER, LOG_IN, SET_USER, LOG_OUT, REMOVE_USER } from './authConstants'
+import {REGISTER, LOG_IN, SET_USER, LOG_OUT, LOG_IN_WITH_GOOGLE} from './authConstants'
 
 export const register = payload => ({
   type: REGISTER,
@@ -10,6 +10,11 @@ export const logIn = payload => ({
   payload
 })
 
+export const logInWithGoogle = payload => ({
+  type: LOG_IN_WITH_GOOGLE,
+  payload
+})
+
 export const logOut = payload => ({
   type: LOG_OUT,
   payload
@@ -18,8 +23,4 @@ export const logOut = payload => ({
 export const setUser = payload => ({
   type: SET_USER,
   payload
-})
-
-export const removeUser = () => ({
-  type: REMOVE_USER
 })

@@ -7,14 +7,14 @@ import i18n from '../../i18n'
 const Login = () => {
   const dispatch = useDispatch()
   const history = useHistory()
-  const [userData, setUserData] = useState({ username: '', password: '' })
+  const [userData, setUserData] = useState({ email: '', password: '' })
 
   const onChange = e => {
     const { name, value } = e.target
     setUserData({ ...userData, [name]: value })
   }
 
-  const isValid = () => userData.username.length
+  const isValid = () => userData.email.length
     && userData.password.length >= 8
 
   const handleLogin = e => {
@@ -31,9 +31,9 @@ const Login = () => {
       <input
         className={'input'}
         onChange={onChange}
-        name={'username'}
-        placeholder={i18n.t('auth.placeholders.username')}
-        value={userData.username}
+        name={'email'}
+        placeholder={i18n.t('auth.placeholders.email')}
+        value={userData.email}
       />
       <input
         className={'input'}

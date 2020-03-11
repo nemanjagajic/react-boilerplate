@@ -1,8 +1,8 @@
-import { REMOVE_USER, SET_USER } from './authConstants'
+import { SET_USER } from './authConstants'
 
 const initialState = {
   user: {
-    username: localStorage.getItem('username'),
+    email: localStorage.getItem('email'),
     token: localStorage.getItem('token')
   }
 }
@@ -14,14 +14,9 @@ export default (state = initialState, action) => {
         ...state,
         user: {
           ...state.user,
-          username: action.payload.username,
+          email: action.payload.email,
           token: action.payload.token
         }
-      }
-    case REMOVE_USER:
-      return {
-        ...state,
-        user: null
       }
     default:
       return state

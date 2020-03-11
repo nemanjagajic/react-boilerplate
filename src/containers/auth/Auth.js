@@ -3,9 +3,18 @@ import Register from './Register'
 import Login from './Login'
 import i18n from '../../i18n'
 import GoogleLogin from 'react-google-login'
+import { useDispatch } from 'react-redux'
+import {logInWithGoogle} from '../../store/auth/authActions'
+import {useHistory} from 'react-router'
 
 const Auth = () => {
+  const dispatch = useDispatch()
+  const history = useHistory()
   const [selectedTab, setSelectedTab] = useState('login')
+
+  const navigateHome = () => {
+    history.push('/')
+  }
 
   return (
     <div className={'auth-wrapper centered'}>
@@ -30,8 +39,11 @@ const Auth = () => {
           render={renderProps => (
             <button onClick={renderProps.onClick} disabled={renderProps.disabled}>This is my custom Google button</button>
           )}
-          onSuccess={resp => console.log(resp)}
-          onFailure={() => console.log('FAILED')}
+          onSuccess={res => dispatch(logInWithGoogle({
+            accessToken: res.tokenObj.access_token,
+            navigateHome
+          }))}
+          onFailure={err => console.log(err)}
           cookiePolicy={'single_host_origin'}
         />
       </div>

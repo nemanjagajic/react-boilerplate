@@ -7,14 +7,14 @@ import i18n from '../../i18n'
 const Register = () => {
   const dispatch = useDispatch()
   const history = useHistory()
-  const [userData, setUserData] = useState({ username: '', password: '' })
+  const [userData, setUserData] = useState({ email: '', password: '' })
 
   const onChange = e => {
     const { name, value } = e.target
     setUserData({ ...userData, [name]: value })
   }
 
-  const isValid = () => userData.username.length
+  const isValid = () => userData.email.length
     && userData.password.length >= 8
 
   const handleRegister = e => {
@@ -30,9 +30,9 @@ const Register = () => {
     <form className={'content'}>
       <input
         className={'input'}
-        placeholder={i18n.t('auth.placeholders.username')}
-        name={'username'}
-        value={userData.username}
+        placeholder={i18n.t('auth.placeholders.email')}
+        name={'email'}
+        value={userData.email}
         onChange={onChange}
       />
       <input
