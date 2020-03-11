@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Register from './Register'
 import Login from './Login'
 import i18n from '../../i18n'
+import GoogleLogin from 'react-google-login'
 
 const Auth = () => {
   const [selectedTab, setSelectedTab] = useState('login')
@@ -24,6 +25,15 @@ const Auth = () => {
           </div>
         </div>
         {selectedTab === 'login' ? <Login /> : <Register />}
+        <GoogleLogin
+          clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
+          render={renderProps => (
+            <button onClick={renderProps.onClick} disabled={renderProps.disabled}>This is my custom Google button</button>
+          )}
+          onSuccess={resp => console.log(resp)}
+          onFailure={() => console.log('FAILED')}
+          cookiePolicy={'single_host_origin'}
+        />
       </div>
     </div>
   )
