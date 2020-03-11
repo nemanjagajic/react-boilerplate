@@ -8,8 +8,8 @@ export function* register({ payload }) {
     yield call(authService.register, payload.userData)
     yield call(logIn, { payload })
   } catch (e) {
-    if (e.response.status === 400)
-      yield put(setAuthError('User already exists.'))
+    const errorMessage = e.response.data.message
+    if (errorMessage) yield put(setAuthError(errorMessage))
   }
 }
 
@@ -21,8 +21,8 @@ export function* logIn({ payload }) {
     yield put(clearAuthError())
     payload.navigateHome()
   } catch (e) {
-    if (e.response.status === 400)
-    yield put(setAuthError('Wrong username or password.'))
+    const errorMessage = e.response.data.message
+    if (errorMessage) yield put(setAuthError(errorMessage))
   }
 }
 
@@ -34,7 +34,8 @@ export function* logInWithGoogle({ payload }) {
     yield put(clearAuthError())
     payload.navigateHome()
   } catch (e) {
-    console.log(e)
+    const errorMessage = e.response.data.message
+    if (errorMessage) yield put(setAuthError(errorMessage))
   }
 }
 

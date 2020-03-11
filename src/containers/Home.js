@@ -16,7 +16,9 @@ const Home = () => {
     <div>
       <Navbar handleLogout={handleLogout}/>
       <div className={'content-wrapper'}>
-        <div className={'welcome-text'}>{`${i18n.t('auth.loggedInAs')} ${email}`}</div>
+        <div className={'welcome-text'}>{`${i18n.t('auth.loggedInAs')} `}
+          <span className={'welcome-text-user'}>{email}</span>
+        </div>
       </div>
     </div>
   )
