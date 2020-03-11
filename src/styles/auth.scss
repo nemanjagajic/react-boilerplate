@@ -3,7 +3,7 @@
 }
 
 .auth-form {
-  width: 40%;
+  width: 450px;
   height: 50%;
 
   .header {
@@ -15,7 +15,7 @@
       cursor: pointer;
       width: 100%;
       text-align: center;
-      color: $primary
+      color: $primary;
     }
 
     .login {
@@ -43,7 +43,7 @@
       padding: 15px;
       margin: 10px;
       outline: none !important;
-      width: 80%;
+      width: 450px;
       background-color: #f5f5f5;
       border-radius: 20px;
       font-size: 16px;
@@ -54,19 +54,42 @@
     }
 
     .button {
-      width: 140px;
+      width: 450px;
       padding: 15px;
-      margin-top: 50px;
+      margin-top: 20px;
       border-radius: 20px;
+      border: 1px solid $primary;
       background-color: $primary;
       color: #ffffff;
       cursor: pointer;
       font-size: 16px;
+      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
     }
 
     .disabled {
       background-color: $primary-disabled;
+      border: 1px solid $primary-disabled;
       cursor: not-allowed;
     }
+
+    .auth-error {
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      color: #E57373;
+    }
+  }
+  .button-google {
+    width: 450px;
+    padding: 15px;
+    margin-top: 20px;
+    background: #FFF;
+    border: 1px solid #e6e6e6;
+    border-radius: 20px;
+    color: #999999;
+    cursor: pointer;
+    font-size: 16px;
   }
 }

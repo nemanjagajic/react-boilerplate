@@ -4,7 +4,7 @@ import { logIn } from '../../store/auth/authActions'
 import { useHistory } from 'react-router'
 import i18n from '../../i18n'
 
-const Login = () => {
+const Login = props => {
   const dispatch = useDispatch()
   const history = useHistory()
   const [userData, setUserData] = useState({ email: '', password: '' })
@@ -29,6 +29,7 @@ const Login = () => {
   return (
     <form className={'content'}>
       <input
+        type={'email'}
         className={'input'}
         onChange={onChange}
         name={'email'}
@@ -43,6 +44,7 @@ const Login = () => {
         type={'password'}
         value={userData.password}
       />
+      <div className={'auth-error'}>{props.authError}</div>
       <input
         type={'submit'}
         value={i18n.t('auth.buttons.login')}

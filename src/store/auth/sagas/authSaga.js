@@ -1,6 +1,6 @@
 import { call, put } from 'redux-saga/effects'
 import authService from '../../../services/api/authService'
-import { setUser } from '../authActions'
+import {clearAuthError, setAuthError, setUser} from '../authActions'
 import request, { attachHeaders } from '../../../services/request'
 
 export function* register({ payload }) {
@@ -8,7 +8,8 @@ export function* register({ payload }) {
     yield call(authService.register, payload.userData)
     yield call(logIn, { payload })
   } catch (e) {
-    console.log(e)
+    if (e.response.status === 400)
+      yield put(setAuthError('User already exists.'))
   }
 }
 
@@ -17,9 +18,11 @@ export function* logIn({ payload }) {
     const userData = payload.userData
     const { data } = yield call(authService.logIn, userData)
     yield call(saveUserToLocalStorage, data)
+    yield put(clearAuthError())
     payload.navigateHome()
   } catch (e) {
-    console.log(e)
+    if (e.response.status === 400)
+    yield put(setAuthError('Wrong username or password.'))
   }
 }
 
@@ -28,6 +31,7 @@ export function* logInWithGoogle({ payload }) {
     const accessToken = payload.accessToken
     const { data } = yield call(authService.logInWithGoogle, accessToken)
     yield call(saveUserToLocalStorage, data)
+    yield put(clearAuthError())
     payload.navigateHome()
   } catch (e) {
     console.log(e)

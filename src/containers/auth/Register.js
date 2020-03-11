@@ -4,7 +4,7 @@ import { register } from '../../store/auth/authActions'
 import { useHistory } from 'react-router'
 import i18n from '../../i18n'
 
-const Register = () => {
+const Register = props => {
   const dispatch = useDispatch()
   const history = useHistory()
   const [userData, setUserData] = useState({ email: '', password: '' })
@@ -43,6 +43,7 @@ const Register = () => {
         type={'password'}
         onChange={onChange}
       />
+      <div className={'auth-error'}>{props.authError}</div>
       <input
         type={'submit'}
         value={i18n.t('auth.buttons.register')}

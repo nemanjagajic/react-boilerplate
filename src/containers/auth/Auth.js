@@ -3,8 +3,8 @@ import Register from './Register'
 import Login from './Login'
 import i18n from '../../i18n'
 import GoogleLogin from 'react-google-login'
-import { useDispatch } from 'react-redux'
-import {logInWithGoogle} from '../../store/auth/authActions'
+import {useDispatch, useSelector} from 'react-redux'
+import {clearAuthError, logInWithGoogle} from '../../store/auth/authActions'
 import {useHistory} from 'react-router'
 
 const Auth = () => {
@@ -12,8 +12,37 @@ const Auth = () => {
   const history = useHistory()
   const [selectedTab, setSelectedTab] = useState('login')
 
+  const authError = useSelector(state => state.auth.authError)
+
   const navigateHome = () => {
     history.push('/')
+  }
+
+  const renderGoogleLoginButton = props => (
+    <button
+      onClick={props.onClick}
+      disabled={props.disabled}
+      className={'button-google'}
+    >
+      {i18n.t('auth.buttons.loginWithGoogle')}
+    </button>
+  )
+
+  const handleGoogleLoginSuccess = response => {
+    dispatch(logInWithGoogle({
+      accessToken: response.tokenObj.access_token,
+      navigateHome
+    }))
+  }
+
+  const selectLoginTab = () => {
+    if (authError) dispatch(clearAuthError())
+    setSelectedTab('login')
+  }
+
+  const selectRegisterTab = () => {
+    if (authError) dispatch(clearAuthError())
+    setSelectedTab('register')
   }
 
   return (
@@ -22,27 +51,26 @@ const Auth = () => {
         <div className={'header'}>
           <div
             className={'login ' + (selectedTab === 'register' && 'inactive')}
-            onClick={() => setSelectedTab('login')}
+            onClick={selectLoginTab}
           >
             {i18n.t('auth.login')}
           </div>
           <div
             className={'register ' + (selectedTab === 'login' && 'inactive')}
-            onClick={() => setSelectedTab('register')}
+            onClick={selectRegisterTab}
           >
             {i18n.t('auth.register')}
           </div>
         </div>
-        {selectedTab === 'login' ? <Login /> : <Register />}
+        {selectedTab === 'login' ? (
+          <Login authError={authError} />
+        ) : (
+          <Register authError={authError} />
+        )}
         <GoogleLogin
           clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
-          render={renderProps => (
-            <button onClick={renderProps.onClick} disabled={renderProps.disabled}>This is my custom Google button</button>
-          )}
-          onSuccess={res => dispatch(logInWithGoogle({
-            accessToken: res.tokenObj.access_token,
-            navigateHome
-          }))}
+          render={renderGoogleLoginButton}
+          onSuccess={handleGoogleLoginSuccess}
           onFailure={err => console.log(err)}
           cookiePolicy={'single_host_origin'}
         />

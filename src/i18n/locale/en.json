@@ -4,6 +4,7 @@
     "register": "Register",
     "buttons": {
       "login": "Log in",
+      "loginWithGoogle": "Log in with Google",
       "register": "Register"
     },
     "placeholders": {
