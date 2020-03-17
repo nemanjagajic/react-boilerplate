@@ -8,21 +8,21 @@ const initialState = {
   authError: null
 }
 
-export default (state = initialState, action) => {
-  switch (action.type) {
+export default (state = initialState, { type, payload }) => {
+  switch (type) {
     case SET_USER:
       return {
         ...state,
         user: {
           ...state.user,
-          email: action.payload.email,
-          token: action.payload.token
+          email: payload.email,
+          token: payload.token
         }
       }
     case SET_AUTH_ERROR:
       return {
         ...state,
-        authError: action.payload
+        authError: payload
       }
     case CLEAR_AUTH_ERROR:
       return {

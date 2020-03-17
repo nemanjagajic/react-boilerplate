@@ -2,7 +2,7 @@ import React from 'react'
 import { Route } from 'react-router-dom'
 import PrivateRoute from './PrivateRoute'
 import Home from './containers/Home'
-import Auth from './containers/auth/Auth'
+import Auth from './containers/Auth'
 
 function App() {
   return (

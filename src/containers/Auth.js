@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import Register from './Register'
-import Login from './Login'
-import i18n from '../../i18n'
+import Register from '../components/auth/Register'
+import Login from '../components/auth/Login'
+import i18n from '../i18n'
 import GoogleLogin from 'react-google-login'
 import {useDispatch, useSelector} from 'react-redux'
-import {clearAuthError, logInWithGoogle} from '../../store/auth/authActions'
+import {clearAuthError, logInWithGoogle} from '../store/auth/authActions'
 import {useHistory} from 'react-router'
 
 const Auth = () => {
